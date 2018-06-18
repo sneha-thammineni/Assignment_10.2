@@ -1,0 +1,89 @@
+<script>
+    class Airplane {
+        constructor(name, occupancy, speed) {
+            this.name = name;
+            this.occupancy = occupancy;
+            this.speed = speed;
+
+        };
+
+        // Using getters and setters
+        get name() {
+            return this._name;
+        }
+
+        set name(value) {
+            if (value == undefined || value == '') {
+                throw new Error("name cannot be empty or undefined");
+            }
+            this._name = value;
+        }
+
+        get occupancy() {
+            return this._occupancy;
+        }
+
+        set occupancy(value) {
+            if (value == undefined || value <= 0 || value >= 180) {
+                throw new Error("Occupancy cannot be empty, should not be negative and should not be more than 180");
+
+            }
+            this._occupancy = value;
+
+        }
+
+        get speed() {
+
+            return this._speed;
+        }
+
+        set speed(value) {
+            if (value == undefined || value <= 0 || value >= 900) {
+                throw new Error("Speed cannot be empty, should not be negative and should not be more than 900");
+            }
+            this._speed = value;
+        }
+
+
+        //Adding new metohds to the class constructor
+        status() {
+            return console.log('Airplane : Boeing 777 with 180 occupancy, is moving at 900 km/hr');
+
+        }
+        increaseSpeed(num) {
+            console.log(`Original speed is increased by ${num} and the result is :  ${this.speed + num}`);
+        }
+
+        decreaseSpeed(num) {
+            console.log(`Original speed is decreased by ${num} and the result is :  ${this.speed - num}`);
+        }
+
+        print() {
+            console.log(`This is an ${this.name} Flight with an occupancy of ${this.occupancy} and travelling at a speed of ${this.speed}`);
+        }
+
+
+    };
+
+    var user = new Airplane('Boeing', 150, 340);
+    console.log(user);
+    user.status();
+    user.increaseSpeed(10);
+    user.decreaseSpeed(10);
+
+    // Creating new objects
+    var airAsia = new Airplane('AirAsia', 140, 400);
+    var indigo = new Airplane('Indigo', 130, 460);
+    var spicejet = new Airplane('Spicejet', 170, 700);
+
+
+    // Calling the print methods 
+    airAsia.print();
+    indigo.print();
+    spicejet.print();
+
+    // Increasing the speed of the objects by 200
+    airAsia.increaseSpeed(200);
+    indigo.increaseSpeed(200);
+    spicejet.increaseSpeed(200);
+</script>
